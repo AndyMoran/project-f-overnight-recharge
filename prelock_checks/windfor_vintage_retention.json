@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-04-20T17:44:05.353750+00:00",
+  "overall_passed": true,
+  "dates_checked": [
+    {
+      "requested_vintage": "2024-01-15T12:30Z",
+      "label": "training-period start (2024-01-15)",
+      "horizon_end_required": "2024-01-17T00:00Z",
+      "status": "pass",
+      "assertions": {
+        "http_200_non_empty": true,
+        "publish_time_exact_match": true,
+        "forecast_horizon_covers_next_day": true,
+        "schema_has_required_fields": true
+      },
+      "evidence": {
+        "http_status": 200,
+        "n_records": 49,
+        "first_publish_time_returned": "2024-01-15T11:30:00+00:00",
+        "min_start_time": "2024-01-15T21:00:00+00:00",
+        "max_start_time": "2024-01-17T21:00:00+00:00",
+        "sample_record": {
+          "publish_time": "2024-01-15T11:30:00+00:00",
+          "start_time": "2024-01-15T21:00:00+00:00",
+          "settlement_date": "2024-01-15",
+          "settlement_period": 43,
+          "generation": 10392
+        }
+      },
+      "failures": []
+    },
+    {
+      "requested_vintage": "2025-12-15T12:30Z",
+      "label": "test-period end (2025-12-15)",
+      "horizon_end_required": "2025-12-17T00:00Z",
+      "status": "pass",
+      "assertions": {
+        "http_200_non_empty": true,
+        "publish_time_exact_match": true,
+        "forecast_horizon_covers_next_day": true,
+        "schema_has_required_fields": true
+      },
+      "evidence": {
+        "http_status": 200,
+        "n_records": 73,
+        "first_publish_time_returned": "2025-12-15T11:30:00+00:00",
+        "min_start_time": "2025-12-14T21:00:00+00:00",
+        "max_start_time": "2025-12-17T21:00:00+00:00",
+        "sample_record": {
+          "publish_time": "2025-12-15T11:30:00+00:00",
+          "start_time": "2025-12-14T21:00:00+00:00",
+          "settlement_date": "2025-12-14",
+          "settlement_period": 43,
+          "generation": 20779
+        }
+      },
+      "failures": []
+    }
+  ]
+}

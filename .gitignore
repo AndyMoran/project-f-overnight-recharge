@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+*.ipynb_checkpoints
+
+# Project-specific
+# Data folders are tracked via README.md placeholders; raw data itself
+# is too large for version control and should be regenerated from the
+# fetcher scripts.
+data/raw/
+data/processed/*.parquet
+data/processed/*.csv
+!data/README.md
+!data/bess_master_list_219.csv
+!data/short_duration_bmu_list.csv
+
+# Notebook output (populated post-run)
+output/*
+!output/.gitkeep
+!output/README.md
+
+# Pre-lock check outputs are committed as evidence; leave them in.
+# (prelock_checks/*.json intentionally tracked)
+
+# Environment files
+.env
+*.env

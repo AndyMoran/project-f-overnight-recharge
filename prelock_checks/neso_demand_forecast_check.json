@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-04-20T17:44:22.101586+00:00",
+  "overall_passed": true,
+  "source": "Elexon TSDF (datasets_tsdf_get)",
+  "vintage_window": "d-1T11:00:00 to d-1T14:59:00 UTC",
+  "dates_checked": [
+    {
+      "target_date": "2024-01-15",
+      "d_minus_1": "2024-01-14",
+      "label": "training-period start",
+      "status": "pass",
+      "assertions": {
+        "http_200_non_empty": true,
+        "evening_sps_in_latest_vintage": true,
+        "latest_vintage_before_cutoff": true,
+        "schema_has_required_fields": true
+      },
+      "evidence": {
+        "http_status": 200,
+        "n_records_in_window": 10584,
+        "n_unique_publish_times": 8,
+        "latest_publish_time": "2024-01-14 14:45:00+00:00",
+        "n_evening_sp_records_latest_vintage": 198
+      },
+      "failures": []
+    },
+    {
+      "target_date": "2025-12-15",
+      "d_minus_1": "2025-12-14",
+      "label": "test-period end",
+      "status": "pass",
+      "assertions": {
+        "http_200_non_empty": true,
+        "evening_sps_in_latest_vintage": true,
+        "latest_vintage_before_cutoff": true,
+        "schema_has_required_fields": true
+      },
+      "evidence": {
+        "http_status": 200,
+        "n_records_in_window": 10584,
+        "n_unique_publish_times": 8,
+        "latest_publish_time": "2025-12-14 14:47:00+00:00",
+        "n_evening_sp_records_latest_vintage": 198
+      },
+      "failures": []
+    }
+  ]
+}

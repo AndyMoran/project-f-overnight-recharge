@@ -1,0 +1,15 @@
+bmu_id,rated_mwh,notes
+T_BLWNB-1,400.0,Statkraft Thornton 200MW/400MWh 2h — solarpowerportal.co.uk Nov 2024
+T_THUPG-1,600.0,Statera Thurrock 300MW/600MWh 2h — energy-storage.news Aug 2025
+T_LKSDB-1,200.0,TagEnergy Lakeside 100MW/200MWh 2h — energy-storage.news
+E_DOLLB-1,200.0,Statera Dollymans 100MW/200MWh 2h — energy-storage.news
+T_FERRB-1,150.0,SSE Ferrybridge 150MW/300MWh total across 2 BMUs — sse.com Mar 2026
+T_FERRB-2,150.0,SSE Ferrybridge 150MW/300MWh total across 2 BMUs — sse.com Mar 2026
+T_USKMB-2,115.0,Uskmouth UES 230MW/460MWh 2h across 4 BMUs — solarpowerportal.co.uk
+T_USKMB-3,115.0,Uskmouth UES 230MW/460MWh 2h across 4 BMUs — solarpowerportal.co.uk
+T_USKMB-4,115.0,Uskmouth UES 230MW/460MWh 2h across 4 BMUs — solarpowerportal.co.uk
+T_USKMB-5,115.0,Uskmouth UES 230MW/460MWh 2h across 4 BMUs — solarpowerportal.co.uk
+T_BLHLB-1,100.0,Zenobe Blackhillock Phase 1 200MW/400MWh across 4 BMUs (50MW each) — energy-storage.news Feb 2025
+T_BLHLB-2,100.0,Zenobe Blackhillock Phase 1 200MW/400MWh across 4 BMUs — energy-storage.news Feb 2025
+T_BLHLB-3,108.0,Zenobe Blackhillock — T_BLHLB-3 is 54MW so 108MWh at 2h duration
+T_BLHLB-4,108.84,Zenobe Blackhillock — T_BLHLB-4 is 54.42MW so 108.84MWh at 2h duration

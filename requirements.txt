@@ -1,0 +1,21 @@
+# Project F — Overnight Recharge Suppression in GB Short-Duration BESS
+# Python runtime requirements.
+#
+# Derived from the IV project's requirements.txt with:
+#   - linearmodels REMOVED (no IV estimation in Project F).
+#   - statsmodels required (used by inference.py and diagnostics.py).
+#   - No additional packages: scipy.spatial.distance.mahalanobis and
+#     scipy.stats.f handle what we'd otherwise want sklearn for.
+
+pandas>=2.0
+numpy>=1.24
+scipy>=1.11
+statsmodels>=0.14
+matplotlib>=3.7
+seaborn>=0.12
+requests>=2.31
+tqdm>=4.65
+pyarrow>=13.0
+elexonpy>=0.0.12
+jupyter>=1.0
+pytest>=7.0

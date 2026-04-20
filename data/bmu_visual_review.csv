@@ -1,0 +1,21 @@
+bmu_id,classified_as_bess,reviewer_note
+E_ARNKB-2,True,Hutton Battery Storage — Flexitricity embedded BESS confirmed
+T_LIONB-2,True,Sembcorp Wilton BESS — confirmed battery storage
+E_BROAB-1,True,Broadditch Battery — Tesla Megapack embedded BESS
+E_BERKB-2,True,Berkeley BESS — EDF 52MW battery storage confirmed
+T_PINFB-4,True,Zenobe Capenhurst — transmission-connected BESS confirmed
+T_PNYCB-1,True,Pen y Cymoedd Battery — Arenko BESS at wind farm site confirmed
+T_NURSB-1,True,Nursling Battery Storage — EDF 48MW BESS confirmed
+T_BRCHS-1,True,Burwell BESS (Cambridgeshire) — lead party name is project company not solar; confirmed BESS
+T_USKMB-2,True,Uskmouth BESS Unit — UES/E.ON/Quinbrook confirmed battery storage
+T_BLWNB-1,True,Thornton Battery — Statkraft 200MW/400MWh confirmed BESS
+T_BLHLB-2,True,Zenobe Blackhillock Phase 1 — confirmed BESS
+T_WBURB-43,True,West Burton B Battery — EDF/West Burton BESS confirmed
+T_RICHB-1,True,Richborough Energy Park 1 — Limejump/Harmony Energy BESS confirmed
+2__PFLEX002,True,Flexitricity embedded storage aggregator — confirmed BESS portfolio
+T_BURWS-1,True,Beechgreen Energy Farm — EDF BESS confirmed
+E_STALB-1,True,KXP Immingham BESS — confirmed battery storage
+E_BRETB-2,True,Brentwood BESS — EDF 52MW confirmed
+T_ENDRB-1,True,Enderby BESS — Flexitricity confirmed
+E_OLDHB-1,True,Oldham BESS — Field Energy 20MW confirmed
+E_ARBRB-1,True,Arbroath Battery Storage — Octopus Energy confirmed

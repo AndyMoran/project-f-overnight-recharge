@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-20T18:54:47.867658+00:00",
+  "ok": true,
+  "checks": {
+    "bmu_list_loads": true,
+    "api_call_succeeds": true,
+    "at_least_one_matching_bmu": true,
+    "schema_has_required_fields": true
+  },
+  "n_bmus_loaded": 97,
+  "sample_n_records": 94,
+  "sample_n_matching_bmus": 94,
+  "sample_record": {
+    "dataset": "B1610",
+    "psr_type": "Generation",
+    "bm_unit": "2__ASTAT003",
+    "national_grid_bm_unit_id": "AG-ASTK03",
+    "settlement_date": "2026-04-10",
+    "settlement_period": "34",
+    "half_hour_end_time": "2026-04-10 16:00:00",
+    "quantity": "10.378"
+  },
+  "errors": [],
+  "configuration": {
+    "bmu_list_path": "data/bess_master_list_219.csv",
+    "sample_date": null,
+    "sample_period": 34
+  }
+}

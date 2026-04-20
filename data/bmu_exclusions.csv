@@ -1,0 +1,85 @@
+elexon_bmu_id,bmu_name,lead_party,rated_mw,exclusion_reason
+T_THUPG-1,T_THUPG-1,THURROCK POWER LIMITED,180.0,duration 3.3h > 2.0h
+E_STALB-1,KXP Immingham BESS,KXP Immingham Ltd,80.844,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_TYLNB-1,Tye Lane BESS,Pivoted Power LLP,58.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_ENDRB-1,Enderby BESS,Flexitricity Limited,57.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_WOLVB-1,Wolverhampton West BESS,EDF Energy Customers Limited,56.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__FBPGM002,Hawthorn Pit BESS,BP Gas Marketing Limited,55.4,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_BLPFB-1,Bulphan Fen Warley Green BESS,EDF Energy Customers Limited,52.492,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BROFB-1,Brook Farm BESS,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_LARKB-1,Larks Green Battery Storage,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_NEWTB-1,Newton wood BESS,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BRETB-2,Brentwood BESS,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BRETB-1,Brentwood BESS,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BERKB-2,Berkeley BESS,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__PLOND001,EDFE Aggregate N Scot 1,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BERKB-1,Berkeley BESS,EDF Energy Customers Limited,52.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__PFLEX002,2__PFLEX002,Flexitricity Limited,51.398,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_WISHB-1,Wishaw BESS,Zenobe Wishaw Limited,51.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BURWB-1,Burwell Weirs Drove BESS,Arenko Cleantech Limited,50.533,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_COVNB-1,Pivot Power Coventry,Pivoted Power LLP,50.449,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_COWB-1,Cowley,Pivoted Power LLP,50.431,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_SUNDB-1,SUNDON BESS,Pivoted Power LLP,50.246,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_WHLWB-1,Whitelee 1 Battery,SP Renewables (UK) Limited,50.2,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_CHAPB-1,Chapel Farm BESS,Tesla Motors Limited,50.169,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_LITRB-1,Little Raith BESS,Tesla Motors Limited,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_LIONB-3,Wilton BESS,Sembcorp (Wilton BESS) Ltd,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_LIONB-1,Wilton BESS,Sembcorp (Wilton BESS) Ltd,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_NLSTB-1,Neilston Battery 1,Statkraft Markets Gmbh,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_ROARB-1,Roaring Hill BESS,Tesla Motors Limited,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BROXB-1,BroxburnBattery,ENGIE Power Limited,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_BRCHS-1,T_BRCHS-1,Burwell 11 Solar Ltd,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_LIONB-2,Wilton BESS,Sembcorp (Wilton BESS) Ltd,50.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_BURWS-1,Beechgreen Energy Farm,EDF Energy Customers Limited,49.952,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_RICHB-2,Richborough Energy Park 2,Limejump Energy Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_RICHB-1,Richborough Energy Park 1,Limejump Energy Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_CATHB-1,CathkinBattery,ENGIE Power Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_PILLB-1,Pillswood 1 Battery Storage,BP Gas Marketing Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_OVRHB-1,Overhill BESS,Flexitricity Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_BREDB-1,BREDBURY BESS,Pivoted Power LLP,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_SKELB-1,Skelmersdale Battery,Tesla Motors Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_PILLB-2,Pillswood 2 Battery Storage,BP Gas Marketing Limited,49.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_THMRB-1,Thame Road  BESS,Tesla Motors Limited,49.5,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_CLAYB-2,ClayTye Farm 2 Battery Storage,Tesla Motors Limited,49.5,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_CLAYB-1,ClayTye Farm 1 Battery Storage,Tesla Motors Limited,49.5,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_ILMEB-1,Ilmer Lane BESS,Tesla Motors Limited,49.5,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__NFLEX009,2__NFLEX009,Flexitricity Limited,49.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__NFLEX001,2__NFLEX001,Flexitricity Limited,49.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_TOLLB-1,Tollgate Energy Storage,Tollgate Energy Storage Ltd,49.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_ROOSB-1,Roosecote BESS,CBS ENERGY STORAGE ASSETS LTD,49.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_ARNKB-2,Hutton Battery Storage,Flexitricity Limited,49.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__PFLEX001,2__PFLEX001,Flexitricity Limited,49.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_PETEM3,Peterborough Power 3,River Nene Power Limited,48.838,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_NURSB-1,Nursling Battery Storage,EDF Energy Customers Limited,48.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BARNB-1,Hunningley Stairfoot BESS,EDF Energy Customers Limited,44.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__ASTAT003,STAT_A4,Statkraft Markets Gmbh,42.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_CUPAB-1,Coupar Battery Storage,Octopus Energy Trading Limited,41.314,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_SHILB-1,Shilton Lane BESS,Octopus Energy Trading Limited,40.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_TEBWB-1,Tebworth BESS Power Park,Arenko Cleantech Limited,39.9,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__FBPGM001,Wormald Green BESS,BP Gas Marketing Limited,37.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_CONTB-1,Contego Battery,Tesla Motors Limited,35.8,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_POTES-1,Port of Tyne Energy Storage,Arenko Cleantech Limited,35.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_ARBRB-1,Arbroath Battery Storage,Octopus Energy Trading Limited,34.511,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_NTAWB-1,North Tawton BESS,EDF Energy Customers Limited,32.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_WBURB-43,West Burton B Battery,West Burton B Limited,31.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_WBURB-41,West Burton B Battery,West Burton B Limited,31.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_JAMBB-1,Jamesfield 1 Battery Storage,Tesla Motors Limited,30.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_PINFB-1,T_PINFB-1,Zenobe Capenhurst Limited,27.08,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_PINFB-3,T_PINFB-3,Zenobe Capenhurst Limited,26.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_PINFB-4,T_PINFB-4,Zenobe Capenhurst Limited,26.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_PINFB-2,T_PINFB-2,Zenobe Capenhurst Limited,26.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_WHTBB-1,Whitebirk BESS,Field Whitebirk Ltd,25.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+T_PNYCB-1,Pen y Cymoedd Battery,Arenko Cleantech Limited,22.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_DOWL-1,Dowlais II,Conrad Energy (Trading) Ltd,21.02,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_NEWPB-1,Newport BESS,Field Newport Ltd,20.933,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_KINCS-1,Kincraig,Kincraig Energy Centre Limited,20.6,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_GRCRB-1,Gerrards Cross BESS,FIELD GERRARDS CROSS LTD,20.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_OLDHB-1,Oldham BESS,Field Oldham Ltd,20.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_HAWKB-1,HawkersHill  Battery,Tesla Motors Limited,20.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_FARNB-1,Farnham BESS,Tesla Motors Limited,20.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_JAMBB-2,Jamesfield 2 Battery Storage,Tesla Motors Limited,19.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_PLYRK-1,Plymouth Rock,Conrad Energy (Trading) Ltd,15.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BROAB-1,Broadditch Battery,Tesla Motors Limited,11.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+2__MBPGM001,Camblesforth BESS,BP Gas Marketing Limited,10.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_BHOLB-1,Holes Bay Battery,Tesla Motors Limited,7.12,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
+E_TDRVE-1,The Drove,Conrad Energy (Trading) Ltd,6.0,rated_mwh MISSING — add to data/bmu_mwh_manual.csv
