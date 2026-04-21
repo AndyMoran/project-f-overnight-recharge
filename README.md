@@ -4,7 +4,7 @@ Python 3.11 | Energy markets | 2026
 
 ## Status — Pre-registration locked, analysis not yet run
 
-Pre-registration v3.2 locked at commit `[hash]`, tag `prereg-lock-v3.2`, on `[date]`. No B1610 data has been accessed. No matching has been run. No results exist.
+Pre-registration v3.2 locked at commit `[e454425f5f0a18901795ecbc46a3e6b4eca530b4]`, tag `prereg-lock-v3.2`, on `[Mon Apr 20 20:51:53 2026 +0100]`. No B1610 data has been accessed. No matching has been run. No results exist.
 
 The primary artefact in this repo **is the pre-registration**, not the result. The point is that the design, the hard stops, and the pass/fail criteria were frozen before the data was touched. Any result produced later is interpretable precisely because the specification is immutable and publicly timestamped.
 
