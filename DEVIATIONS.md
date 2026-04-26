@@ -305,4 +305,56 @@ the explicit vintage time have been corrected.
   * `prelock_checks/neso_demand_forecast_check.py` — rewritten to use
     TSDF; passes for both study boundary dates.
 
+## Entry 005 - Treatment metric: discharge-only not net output
+
+**Date:** 2026-04-21
+**Triggered by:** Code review of `src/merge.py` `build_bess_treatment()`.
+
+**Bug:** The initial implementation summed `quantity` over SP 34-44 and
+clipped the result to zero. This computes net output (discharge minus
+charge), which understates true state-of-charge drawdown on days where
+some BMUs are charging while others are discharging within the evening
+window. The clip to zero treated net-charging evenings as zero depletion
+but did not correctly handle the case where gross discharge exceeds gross
+charge by a meaningful amount.
+
+**Pre-reg specification:** §Variables defines `evening_depletion_d` as
+fleet discharge energy in SP 34-44 normalised by fleet nameplate MWh.
+"Discharge" means positive B1610 output — the pre-reg explicitly
+describes the mechanism as SoC drawdown from discharging, not net
+position.
+
+**Correction:** `build_bess_treatment()` now computes
+`max(0, quantity)` per row before summing, then multiplies by 0.5h
+and divides by fleet MWh. This is discharge-only, as pre-registered.
+
+**Classification:** Implementation bug fix. Aligns code with the
+pre-registered definition. Not a change to study design.
+
+**Files changed:**
+  * `src/merge.py` — `build_bess_treatment()` corrected.
+
+## Entry 006 - Replacement of Matched-Pair Estimation with Regression
+
+**Pre-registered approach**
+
+The primary identification strategy specified in the pre-registration was a matched-pair design, comparing high- and low-depletion days matched on covariates.
+
+**What changed**
+
+The matched-pair design was evaluated using pre-registered hard-stop checks in `00_hard_stops.ipynb`. The design failed the permutation-based robustness test (HS-3), as it did not produce a stable distribution of placebo effects.
+
+As a result, the matched-pair approach was deemed not viable for causal inference.
+
+A regression-based approach was subsequently implemented in `01_regression_analysis.ipynb` to estimate the relationship between evening depletion and next-day overnight prices.
+
+**Justification**
+
+This deviation was not driven by results, but by failure of a pre-registered validity check. The regression approach provides a more stable and interpretable framework given the available data.
+
+**Status**
+
+The regression analysis is not pre-registered and should be interpreted as a complementary, non-pre-registered analysis.
+
+
 **Approved by:** Andy Moran, 2026-04-20.
