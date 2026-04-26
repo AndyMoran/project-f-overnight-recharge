@@ -1,14 +1,97 @@
-elexon_bmu_id,ng_bmu_id,bmu_name,rated_mw,rated_mwh,duration_ratio_h,mwh_source,lead_party,identification_method,active_2024_25
-T_BLWNB-1,BLWNB-1,Thornton Battery,200.0,400.0,2.0,MANUAL,Statkraft Markets Gmbh,name_keyword,False
-T_LKSDB-1,LKSDB-1,Lakeside  BESS,105.0,200.0,1.9047619047619047,MANUAL,Lakeside Energy Storage Ltd,fuelType=OTHER,True
-E_DOLLB-1,DOLLB-1,Dollymans Storage,102.0,200.0,1.9607843137254901,MANUAL,Dollymans Storage Limited,fuelType=OTHER,True
-T_FERRB-1,FERRB-1,Ferrybridge BESS BMU-1,76.0,150.0,1.9736842105263157,MANUAL,SSE BATTERY SALISBURY LIMITED,fuelType=OTHER,False
-T_FERRB-2,FERRB-2,Ferrybridge BESS BMU-2,76.0,150.0,1.9736842105263157,MANUAL,SSE BATTERY SALISBURY LIMITED,fuelType=OTHER,False
-T_USKMB-2,USKMB-2,UES Asset 1 limited BMU1 BESS1,57.5,115.0,2.0,MANUAL,UES Asset 1 Limited,fuelType=OTHER,False
-T_USKMB-3,USKMB-3,UES Asset 1 limited BMU1 BESS2,57.5,115.0,2.0,MANUAL,UES Asset 1 Limited,fuelType=OTHER,False
-T_USKMB-4,USKMB-4,Uskmouth Battery Unit 4,57.5,115.0,2.0,MANUAL,E.ON UK Battery Storage,fuelType=OTHER,False
-T_USKMB-5,USKMB-5,Uskmouth Battery Unit 5,57.5,115.0,2.0,MANUAL,E.ON UK Battery Storage,fuelType=OTHER,False
-T_BLHLB-4,BLHLB-4,T_BLHLB-4,54.42,108.84,2.0,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True
-T_BLHLB-3,BLHLB-3,T_BLHLB-3,54.0,108.0,2.0,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True
-T_BLHLB-2,BLHLB-2,T_BLHLB-2,50.42,100.0,1.9833399444664814,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True
-T_BLHLB-1,BLHLB-1,T_BLHLB-1,50.0,100.0,2.0,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True
+elexon_bmu_id,ng_bmu_id,bmu_name,rated_mw,rated_mwh,duration_ratio_h,mwh_source,lead_party,identification_method,active_2024_25,duration_hours
+T_BLWNB-1,BLWNB-1,Thornton Battery,200.0,400.0,2.0,MANUAL,Statkraft Markets Gmbh,name_keyword,False,2.0
+T_LKSDB-1,LKSDB-1,Lakeside  BESS,105.0,200.0,1.9047619047619049,MANUAL,Lakeside Energy Storage Ltd,fuelType=OTHER,True,1.9047619047619047
+E_DOLLB-1,DOLLB-1,Dollymans Storage,102.0,200.0,1.96078431372549,MANUAL,Dollymans Storage Limited,fuelType=OTHER,True,1.9607843137254901
+E_STALB-1,STALB-1,KXP Immingham BESS,80.844,121.26599999999999,,MISSING,KXP Immingham Ltd,name_keyword,False,1.5
+T_FERRB-2,FERRB-2,Ferrybridge BESS BMU-2,76.0,150.0,1.973684210526316,MANUAL,SSE BATTERY SALISBURY LIMITED,fuelType=OTHER,False,1.9736842105263157
+T_FERRB-1,FERRB-1,Ferrybridge BESS BMU-1,76.0,150.0,1.973684210526316,MANUAL,SSE BATTERY SALISBURY LIMITED,fuelType=OTHER,False,1.9736842105263157
+T_TYLNB-1,TYLNB-1,Tye Lane BESS,58.0,87.0,,MISSING,Pivoted Power LLP,name_keyword,True,1.5
+T_USKMB-5,USKMB-5,Uskmouth Battery Unit 5,57.5,115.0,2.0,MANUAL,E.ON UK Battery Storage,fuelType=OTHER,False,2.0
+T_USKMB-3,USKMB-3,UES Asset 1 limited BMU1 BESS2,57.5,115.0,2.0,MANUAL,UES Asset 1 Limited,fuelType=OTHER,False,2.0
+T_USKMB-2,USKMB-2,UES Asset 1 limited BMU1 BESS1,57.5,115.0,2.0,MANUAL,UES Asset 1 Limited,fuelType=OTHER,False,2.0
+T_USKMB-4,USKMB-4,Uskmouth Battery Unit 4,57.5,115.0,2.0,MANUAL,E.ON UK Battery Storage,fuelType=OTHER,False,2.0
+T_ENDRB-1,ENDRB-1,Enderby BESS,57.0,85.5,,MISSING,Flexitricity Limited,fuelType=OTHER,False,1.5
+E_WOLVB-1,WOLVB-1,Wolverhampton West BESS,56.0,84.0,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+2__FBPGM002,FBPG02,Hawthorn Pit BESS,55.4,83.1,,MISSING,BP Gas Marketing Limited,name_keyword,True,1.5
+T_BLHLB-4,BLHLB-4,T_BLHLB-4,54.42,108.84,2.0,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True,2.0
+T_BLHLB-3,BLHLB-3,T_BLHLB-3,54.0,108.0,2.0,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True,2.0
+T_BLPFB-1,BLPFB-1,Bulphan Fen Warley Green BESS,52.492,78.738,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+E_BERKB-2,BERKB-2,Berkeley BESS,52.0,78.0,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+E_BRETB-1,BRETB-1,Brentwood BESS,52.0,78.0,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+E_BERKB-1,BERKB-1,Berkeley BESS,52.0,78.0,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+E_BROFB-1,BROFB-1,Brook Farm BESS,52.0,78.0,,MISSING,EDF Energy Customers Limited,name_keyword,True,1.5
+E_BRETB-2,BRETB-2,Brentwood BESS,52.0,78.0,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+T_LARKB-1,LARKB-1,Larks Green Battery Storage,52.0,78.0,,MISSING,EDF Energy Customers Limited,fuelType=OTHER,True,1.5
+2__PLOND001,AG-PEDF01,EDFE Aggregate N Scot 1,52.0,78.0,,MISSING,EDF Energy Customers Limited,fuelType=OTHER,True,1.5
+E_NEWTB-1,NEWTB-1,Newton wood BESS,52.0,78.0,,MISSING,EDF Energy Customers Limited,name_keyword,True,1.5
+2__PFLEX002,AG-PFLX02,2__PFLEX002,51.398,77.09700000000001,,MISSING,Flexitricity Limited,fuelType=OTHER,True,1.5
+T_WISHB-1,WISHB-1,Wishaw BESS,51.0,76.5,,MISSING,Zenobe Wishaw Limited,fuelType=OTHER,True,1.5
+E_BURWB-1,BURWB-1,Burwell Weirs Drove BESS,50.533,75.7995,,MISSING,Arenko Cleantech Limited,fuelType=OTHER,True,1.4999999999999998
+T_COVNB-1,COVNB-1,Pivot Power Coventry,50.449,75.67349999999999,,MISSING,Pivoted Power LLP,fuelType=OTHER,True,1.4999999999999998
+T_COWB-1,COWB-1,Cowley,50.431,75.6465,,MISSING,Pivoted Power LLP,fuelType=OTHER,True,1.5000000000000002
+T_BLHLB-2,BLHLB-2,T_BLHLB-2,50.42,100.0,1.9833399444664812,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True,1.9833399444664814
+T_SUNDB-1,SUNDB-1,SUNDON BESS,50.246,75.369,,MISSING,Pivoted Power LLP,name_keyword,True,1.5
+T_WHLWB-1,WHLWB-1,Whitelee 1 Battery,50.2,75.30000000000001,,MISSING,SP Renewables (UK) Limited,name_keyword,True,1.5000000000000002
+E_CHAPB-1,CHAPB-1,Chapel Farm BESS,50.169,75.2535,,MISSING,Tesla Motors Limited,name_keyword,True,1.5000000000000002
+E_LITRB-1,LITRB-1,Little Raith BESS,50.0,75.0,,MISSING,Tesla Motors Limited,fuelType=OTHER,True,1.5
+E_BROXB-1,BROXB-1,BroxburnBattery,50.0,75.0,,MISSING,ENGIE Power Limited,fuelType=OTHER,False,1.5
+T_BLHLB-1,BLHLB-1,T_BLHLB-1,50.0,100.0,2.0,MANUAL,ZENOBE BLACKHILLOCK LIMITED,fuelType=OTHER,True,2.0
+T_LIONB-1,LionB-1,Wilton BESS,50.0,75.0,,MISSING,Sembcorp (Wilton BESS) Ltd,name_keyword,False,1.5
+T_LIONB-3,LionB-3,Wilton BESS,50.0,75.0,,MISSING,Sembcorp (Wilton BESS) Ltd,name_keyword,False,1.5
+T_LIONB-2,LionB-2,Wilton BESS,50.0,75.0,,MISSING,Sembcorp (Wilton BESS) Ltd,name_keyword,False,1.5
+E_ROARB-1,ROARB-1,Roaring Hill BESS,50.0,75.0,,MISSING,Tesla Motors Limited,fuelType=OTHER,True,1.5
+T_BRCHS-1,BRCHS-1,T_BRCHS-1,50.0,75.0,,MISSING,Burwell 11 Solar Ltd,fuelType=OTHER,True,1.5
+T_NLSTB-1,NLSTB-1,Neilston Battery 1,50.0,75.0,,MISSING,Statkraft Markets Gmbh,fuelType=OTHER,False,1.5
+T_BURWS-1,BURWS-1,Beechgreen Energy Farm,49.952,74.928,,MISSING,EDF Energy Customers Limited,fuelType=OTHER,True,1.5
+E_CATHB-1,CATHB-1,CathkinBattery,49.9,74.85,,MISSING,ENGIE Power Limited,fuelType=OTHER,False,1.5
+T_BREDB-1,BREDB-1,BREDBURY BESS,49.9,74.85,,MISSING,Pivoted Power LLP,name_keyword,True,1.5
+T_RICHB-1,RICHB-1,Richborough Energy Park 1,49.9,74.85,,MISSING,Limejump Energy Limited,fuelType=OTHER,True,1.5
+E_OVRHB-1,OVRHB-1,Overhill BESS,49.9,74.85,,MISSING,Flexitricity Limited,fuelType=OTHER,False,1.5
+E_SKELB-1,SKELB-1,Skelmersdale Battery,49.9,74.85,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_PILLB-1,PILLB-1,Pillswood 1 Battery Storage,49.9,74.85,,MISSING,BP Gas Marketing Limited,name_keyword,True,1.5
+T_RICHB-2,RICHB-2,Richborough Energy Park 2,49.9,74.85,,MISSING,Limejump Energy Limited,fuelType=OTHER,True,1.5
+E_PILLB-2,PILLB-2,Pillswood 2 Battery Storage,49.9,74.85,,MISSING,BP Gas Marketing Limited,name_keyword,True,1.5
+E_THMRB-1,THMRB-1,Thame Road  BESS,49.5,74.25,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_ILMEB-1,ILMEB-1,Ilmer Lane BESS,49.5,74.25,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_CLAYB-2,CLAYB-2,ClayTye Farm 2 Battery Storage,49.5,74.25,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_CLAYB-1,CLAYB-1,ClayTye Farm 1 Battery Storage,49.5,74.25,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+2__NFLEX009,AG-NFLX09,2__NFLEX009,49.0,73.5,,MISSING,Flexitricity Limited,fuelType=OTHER,True,1.5
+2__NFLEX001,AG-NFLX01,2__NFLEX001,49.0,73.5,,MISSING,Flexitricity Limited,fuelType=OTHER,True,1.5
+2__PFLEX001,AG-PFLX01,2__PFLEX001,49.0,73.5,,MISSING,Flexitricity Limited,fuelType=OTHER,True,1.5
+E_TOLLB-1,TOLLB-1,Tollgate Energy Storage,49.0,73.5,,MISSING,Tollgate Energy Storage Ltd,name_keyword,True,1.5
+E_ROOSB-1,ROOSB-1,Roosecote BESS,49.0,73.5,,MISSING,CBS ENERGY STORAGE ASSETS LTD,name_keyword,True,1.5
+E_ARNKB-2,ARNKB-2,Hutton Battery Storage,49.0,73.5,,MISSING,Flexitricity Limited,name_keyword,True,1.5
+E_PETEM3,PETEM3,Peterborough Power 3,48.838,73.257,,MISSING,River Nene Power Limited,fuelType=OTHER,True,1.5
+T_NURSB-1,NURSB-1,Nursling Battery Storage,48.0,72.0,,MISSING,EDF Energy Customers Limited,name_keyword,True,1.5
+E_BARNB-1,BARNB-1,Hunningley Stairfoot BESS,44.0,66.0,,MISSING,EDF Energy Customers Limited,name_keyword,True,1.5
+2__ASTAT003,AG-ASTK03,STAT_A4,42.0,63.0,,MISSING,Statkraft Markets Gmbh,fuelType=OTHER,True,1.5
+E_CUPAB-1,CUPAB-1,Coupar Battery Storage,41.314,61.971000000000004,,MISSING,Octopus Energy Trading Limited,fuelType=OTHER,True,1.5
+E_SHILB-1,SHILB-1,Shilton Lane BESS,40.0,60.0,,MISSING,Octopus Energy Trading Limited,fuelType=OTHER,True,1.5
+T_TEBWB-1,TEBWB-1,Tebworth BESS Power Park,39.9,59.849999999999994,,MISSING,Arenko Cleantech Limited,name_keyword,True,1.5
+2__FBPGM001,FBPG01,Wormald Green BESS,37.0,55.5,,MISSING,BP Gas Marketing Limited,name_keyword,True,1.5
+E_CONTB-1,CONTB-1,Contego Battery,35.8,53.699999999999996,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_POTES-1,POTES-1,Port of Tyne Energy Storage,35.0,52.5,,MISSING,Arenko Cleantech Limited,name_keyword,True,1.5
+E_ARBRB-1,ARBRB-1,Arbroath Battery Storage,34.511,51.76650000000001,,MISSING,Octopus Energy Trading Limited,fuelType=OTHER,True,1.5
+E_NTAWB-1,NTAWB-1,North Tawton BESS,32.0,48.0,,MISSING,EDF Energy Customers Limited,name_keyword,False,1.5
+T_WBURB-43,WBURB-43,West Burton B Battery,31.0,46.5,,MISSING,West Burton B Limited,fuelType=OTHER,True,1.5
+T_WBURB-41,WBURB-41,West Burton B Battery,31.0,46.5,,MISSING,West Burton B Limited,fuelType=OTHER,True,1.5
+E_JAMBB-1,JAMBB-1,Jamesfield 1 Battery Storage,30.0,45.0,,MISSING,Tesla Motors Limited,fuelType=OTHER,True,1.5
+T_PINFB-1,PINFB-1,T_PINFB-1,27.08,40.62,,MISSING,Zenobe Capenhurst Limited,fuelType=OTHER,True,1.5
+T_PINFB-3,PINFB-3,T_PINFB-3,26.0,39.0,,MISSING,Zenobe Capenhurst Limited,fuelType=OTHER,True,1.5
+T_PINFB-2,PINFB-2,T_PINFB-2,26.0,39.0,,MISSING,Zenobe Capenhurst Limited,fuelType=OTHER,True,1.5
+T_PINFB-4,PINFB-4,T_PINFB-4,26.0,39.0,,MISSING,Zenobe Capenhurst Limited,fuelType=OTHER,True,1.5
+E_WHTBB-1,WHTBB-1,Whitebirk BESS,25.0,37.5,,MISSING,Field Whitebirk Ltd,name_keyword,False,1.5
+T_PNYCB-1,PNYCB-1,Pen y Cymoedd Battery,22.0,33.0,,MISSING,Arenko Cleantech Limited,name_keyword,True,1.5
+E_DOWL-1,DOWL-1,Dowlais II,21.02,31.53,,MISSING,Conrad Energy (Trading) Ltd,fuelType=OTHER,False,1.5
+E_NEWPB-1,NEWPB-1,Newport BESS,20.933,31.3995,,MISSING,Field Newport Ltd,name_keyword,True,1.5
+E_KINCS-1,KINCS-1,Kincraig,20.6,30.900000000000002,,MISSING,Kincraig Energy Centre Limited,fuelType=OTHER,False,1.5
+E_HAWKB-1,HAWKB-1,HawkersHill  Battery,20.0,30.0,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_GRCRB-1,GRCRB-1,Gerrards Cross BESS,20.0,30.0,,MISSING,FIELD GERRARDS CROSS LTD,name_keyword,True,1.5
+E_OLDHB-1,OLDHB-1,Oldham BESS,20.0,30.0,,MISSING,Field Oldham Ltd,name_keyword,True,1.5
+E_FARNB-1,FARNB-1,Farnham BESS,20.0,30.0,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_JAMBB-2,JAMBB-2,Jamesfield 2 Battery Storage,19.0,28.5,,MISSING,Tesla Motors Limited,fuelType=OTHER,True,1.5
+E_PLYRK-1,PLYRK-1,Plymouth Rock,15.0,22.5,,MISSING,Conrad Energy (Trading) Ltd,fuelType=OTHER,False,1.5
+E_BROAB-1,BROAB-1,Broadditch Battery,11.0,16.5,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+2__MBPGM001,CAMFB-1,Camblesforth BESS,10.0,15.0,,MISSING,BP Gas Marketing Limited,name_keyword,False,1.5
+E_BHOLB-1,BHOLB-1,Holes Bay Battery,7.12,10.68,,MISSING,Tesla Motors Limited,name_keyword,True,1.5
+E_TDRVE-1,TDRVE-1,The Drove,6.0,9.0,,MISSING,Conrad Energy (Trading) Ltd,fuelType=OTHER,True,1.5

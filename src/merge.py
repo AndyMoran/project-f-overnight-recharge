@@ -24,7 +24,7 @@ Columns in project_f_merged.parquet
     DA_wind_forecast_evening_d              WINDFOR avg SP 34-44 (MW)
     DA_demand_forecast_evening_d            TSDF avg SP 34-44 (MW)
     DA_IC_schedule_overnight_d              placeholder 0.0 (IC data TBD)
-    evening_depletion_d                     fleet net discharge SP 34-44 / fleet MWh
+    evening_depletion_d                     fleet discharge (positive output only) SP 34–44 / fleet MWh
     BESS_SD_fleet_operational_bmu_sps_expected  int (for HS-1)
     BESS_SD_fleet_operational_bmu_sps_observed  int (for HS-1)
     day_of_week_d                           0=Mon...6=Sun
@@ -90,118 +90,270 @@ def build_bess_treatment(
     bmu_short: pd.DataFrame,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
-    From B1610 and the short-duration BMU list, compute:
-      - evening_depletion_d: fleet net discharge SP34-44 / fleet MWh
-      - daily BMU coverage counts for HS-1
-      - bmu_day_detail for HS-7
+    Build treatment and diagnostics per pre-reg:
 
-    Returns (daily_df, bmu_day_df).
+    - evening_depletion_d = discharge-only (NOT net) over SP34–44
+                            divided by operational fleet MWh on day d
+    - HS-1 coverage uses operational BMUs per day
+    - HS-7 BMU-day discharge detail retained
+
+    Returns:
+        daily_df, bmu_day_df
     """
-    # Normalise B1610 columns
+
+    # -----------------------------
+    # Standardise columns
+    # -----------------------------
     b1610 = b1610.copy()
     b1610.columns = [c.lower() for c in b1610.columns]
 
-    bmu_col  = next((c for c in b1610.columns if c in ("bm_unit", "bmunit", "elexon_bmu_id")), None)
-    date_col = next((c for c in b1610.columns if "settlement_date" in c), None)
-    sp_col   = next((c for c in b1610.columns if "settlement_period" in c), None)
-    qty_col  = next((c for c in b1610.columns if c in ("quantity", "generation_mw", "quantity_mw")), None)
-
-    if not all([bmu_col, date_col, sp_col, qty_col]):
-        raise ValueError(f"B1610 missing required columns. Found: {list(b1610.columns)}")
+    bmu_col  = next(c for c in b1610.columns if c in ("bm_unit","bmunit","elexon_bmu_id"))
+    date_col = next(c for c in b1610.columns if "settlement_date" in c)
+    sp_col   = next(c for c in b1610.columns if "settlement_period" in c)
+    qty_col  = next(c for c in b1610.columns if c in ("quantity","generation_mw","quantity_mw"))
 
     b1610[date_col] = pd.to_datetime(b1610[date_col])
     b1610[qty_col]  = pd.to_numeric(b1610[qty_col], errors="coerce")
 
-    # BMU list normalisation
+    # -----------------------------
+    # BMU reference (short-duration only)
+    # -----------------------------
     bmu_short = bmu_short.copy()
+
+    # 🔧 Force column names to string
+    bmu_short.columns = [str(c) for c in bmu_short.columns]
+
+    # 🔧 Remove bad columns
+    bmu_short = bmu_short.loc[:, ~pd.isna(bmu_short.columns)]
+    bmu_short = bmu_short.loc[:, bmu_short.columns != "nan"]
+    bmu_short = bmu_short.dropna(axis=1, how="all")
+
+    # Lowercase AFTER cleaning
     bmu_short.columns = [c.lower() for c in bmu_short.columns]
-    bmu_id_col = next(
-        (c for c in bmu_short.columns if c in ("elexon_bmu_id", "bm_unit", "bmu_id")), None
-    )
-    mwh_col = next((c for c in bmu_short.columns if "rated_mwh" in c or c == "mwh"), None)
-    mw_col  = next((c for c in bmu_short.columns if "rated_mw" in c), None)
 
-    if bmu_id_col is None:
-        raise ValueError(f"BMU list missing ID column. Found: {list(bmu_short.columns)}")
+    # 🔧 NOW define columns (must come AFTER cleaning)
+    id_col = next(c for c in bmu_short.columns if c in ("elexon_bmu_id","bm_unit","bmu_id"))
+    mwh_col = next(c for c in bmu_short.columns if "mwh" in c)
 
-    bmu_set = set(bmu_short[bmu_id_col].astype(str).str.strip())
+    # NOW safe to use id_col
+    bmu_short[id_col] = bmu_short[id_col].astype(str).str.strip()
+    bmu_short[mwh_col] = pd.to_numeric(bmu_short[mwh_col], errors="coerce")
+    
+    # Now safe to lowercase
+    bmu_short.columns = [c.lower() for c in bmu_short.columns]
 
-    # Fleet total nameplate MWh (sum across short-duration fleet)
-    if mwh_col:
-        fleet_mwh = pd.to_numeric(bmu_short[mwh_col], errors="coerce").sum()
+    # commissioning / decommissioning optional but strongly preferred
+    comm_col = next((c for c in bmu_short.columns if "commission" in c), None)
+    decomm_col = next((c for c in bmu_short.columns if "decommission" in c), None)
+
+    bmu_short[id_col] = bmu_short[id_col].astype(str).str.strip()
+    bmu_short[mwh_col] = pd.to_numeric(bmu_short[mwh_col], errors="coerce")
+
+    if comm_col:
+        bmu_short[comm_col] = pd.to_datetime(bmu_short[comm_col])
     else:
-        # Fallback: use 2h × rated_mw
-        fleet_mw = pd.to_numeric(bmu_short[mw_col], errors="coerce").sum() if mw_col else 1.0
-        fleet_mwh = fleet_mw * 2.0
-        logger.warning(f"  No MWh column — using 2h × rated_mw = {fleet_mwh:.0f} MWh")
+        bmu_short[comm_col] = pd.Timestamp("1900-01-01")
 
-    logger.info(f"  Fleet nameplate MWh: {fleet_mwh:.0f}")
-    logger.info(f"  Short-duration BMUs: {len(bmu_set)}")
+    if decomm_col:
+        bmu_short[decomm_col] = pd.to_datetime(bmu_short[decomm_col])
+    else:
+        bmu_short[decomm_col] = pd.Timestamp("2100-01-01")
 
-    # Filter B1610 to short-duration BMUs
+    # -----------------------------
+    # Restrict B1610 to SD fleet
+    # -----------------------------
+    bmu_set = set(bmu_short[id_col])
     b1610_sd = b1610[b1610[bmu_col].astype(str).str.strip().isin(bmu_set)].copy()
-    logger.info(f"  B1610 rows after SD filter: {len(b1610_sd):,}")
 
-    # Evening window: SP 34-44
+    # -------------------------------------------------
+    # Infer commissioning dates from B1610 (CRITICAL)
+    # -------------------------------------------------
+    b1610_sd["_bmu_id_clean"] = (
+        b1610_sd[bmu_col]
+        .astype(str)
+        .str.strip()
+        .str.upper()
+    )
+
+    bmu_short[id_col] = (
+        bmu_short[id_col]
+        .astype(str)
+        .str.strip()
+        .str.upper()
+    )
+
+    first_seen = (
+        b1610_sd.groupby("_bmu_id_clean")[date_col]
+        .min()
+        .reset_index()
+        .rename(columns={date_col: "commissioning_date"})
+    )
+
+    # Merge into BMU list
+    bmu_short = bmu_short.merge(
+        first_seen,
+        left_on=id_col,
+        right_on="_bmu_id_clean",
+        how="left"
+    )
+    bmu_short = bmu_short.drop(columns=["_bmu_id_clean"], errors="ignore")
+    
+    # 🔧 CLEAN AGAIN AFTER MERGE (THIS IS THE MISSING STEP)
+    bmu_short.columns = [str(c) for c in bmu_short.columns]
+    bmu_short = bmu_short.loc[:, ~pd.isna(bmu_short.columns)]
+    bmu_short = bmu_short.loc[:, bmu_short.columns != "nan"]
+    bmu_short = bmu_short.dropna(axis=1, how="all")
+
+    # DEBUG (temporary)
+    print("\nDEBUG: bmu_short after commissioning merge")
+    print("Columns:", bmu_short.columns)
+    print(bmu_short.head())
+
+    # Ensure column exists
+    if "commissioning_date" not in bmu_short.columns:
+        raise ValueError("commissioning_date not created — merge failed")
+
+   # Clean commissioning dates
+    bmu_short["commissioning_date"] = pd.to_datetime(
+        bmu_short["commissioning_date"],
+        errors="coerce"
+    )
+
+    # Set decommission far future
+    bmu_short["decommissioning_date"] = pd.Timestamp("2100-01-01")
+
+    # Clean IDs
+    bmu_short[id_col] = bmu_short[id_col].astype(str).str.strip()
+
+    # Drop merge helper column
+    # bmu_short = bmu_short.drop(columns=["_bmu_id_clean"], errors="ignore")
+    bmu_short = bmu_short.loc[:, ~bmu_short.columns.isna()]
+    # Optional: log how many BMUs never appear in B1610
+    n_missing = bmu_short["commissioning_date"].isna().sum()
+    if n_missing > 0:
+        print(f"WARNING: {n_missing} BMUs never appear in B1610 — excluded from fleet")
+
+    # Set decommission far future
+    bmu_short["decommissioning_date"] = pd.Timestamp("2100-01-01")
+
+    # -----------------------------
+    # Evening window only
+    # -----------------------------
+    EVENING_SPS = list(range(34, 45))
     b1610_eve = b1610_sd[b1610_sd[sp_col].isin(EVENING_SPS)].copy()
 
-    # Per-day: fleet net discharge in the evening window
-    # quantity > 0 = generation (discharge); < 0 = consumption (charge)
-    daily_discharge = (
-        b1610_eve.groupby(b1610_eve[date_col].dt.date)[qty_col]
-        .sum()   # positive = net discharge
-        .reset_index()
-    )
-    daily_discharge.columns = ["date", "fleet_evening_net_discharge_mwh"]
-    daily_discharge["date"] = pd.to_datetime(daily_discharge["date"])
+    # -----------------------------
+    # Discharge-only (CRITICAL FIX)
+    # -----------------------------
+    # Positive = discharge, negative = charging
+    b1610_eve["discharge_mw"] = np.maximum(0, b1610_eve[qty_col])
+    b1610_eve["discharge_mwh"] = b1610_eve["discharge_mw"] * 0.5
 
-    # Normalise by fleet MWh → treatment metric
-    # Each SP is 30 min = 0.5h; quantity in MW → MWh per SP = MW × 0.5
-    n_sps = len(EVENING_SPS)
-    daily_discharge["fleet_evening_net_discharge_mwh"] *= 0.5  # MW → MWh
-    daily_discharge["evening_depletion_d"] = (
-        daily_discharge["fleet_evening_net_discharge_mwh"] / fleet_mwh
-    ).clip(lower=0)   # clip to 0 — negative (net charging evening) → 0 depletion
-
-    # HS-1: coverage counts
-    # Expected: len(bmu_set) × 11 SPs per date
-    expected_per_day = len(bmu_set) * n_sps
-    observed_counts = (
-        b1610_eve.groupby(b1610_eve[date_col].dt.date)[[bmu_col]]
-        .count()
-        .reset_index()
-    )
-    observed_counts.columns = ["date", "BESS_SD_fleet_operational_bmu_sps_observed"]
-    observed_counts["date"] = pd.to_datetime(observed_counts["date"])
-    observed_counts["BESS_SD_fleet_operational_bmu_sps_expected"] = expected_per_day
-
-    daily = daily_discharge.merge(observed_counts, on="date", how="outer")
-
-    # BMU-day detail for HS-7
+    # -----------------------------
+    # BMU-day discharge (HS-7)
+    # -----------------------------
     bmu_day = (
-        b1610_eve.groupby([b1610_eve[date_col].dt.date, b1610_eve[bmu_col]])[qty_col]
+        b1610_eve.groupby([b1610_eve[date_col].dt.date, b1610_eve[bmu_col]])["discharge_mwh"]
         .sum()
         .reset_index()
     )
     bmu_day.columns = ["date", "bmu_id", "evening_discharge_mwh"]
-    bmu_day["evening_discharge_mwh"] *= 0.5   # MW → MWh
-
-    # Add nameplate MWh per BMU for HS-7
-    if mwh_col:
-        mwh_lookup = (
-            bmu_short[[bmu_id_col, mwh_col]]
-            .rename(columns={bmu_id_col: "bmu_id", mwh_col: "nameplate_mwh"})
-        )
-        mwh_lookup["nameplate_mwh"] = pd.to_numeric(mwh_lookup["nameplate_mwh"], errors="coerce")
-        bmu_day = bmu_day.merge(mwh_lookup, on="bmu_id", how="left")
-    else:
-        bmu_day["nameplate_mwh"] = fleet_mwh / len(bmu_set)
-
     bmu_day["date"] = pd.to_datetime(bmu_day["date"])
 
+    # attach nameplate MWh
+    bmu_day = bmu_day.merge(
+        bmu_short[[id_col, mwh_col]].rename(columns={
+            id_col: "bmu_id",
+            mwh_col: "nameplate_mwh"
+        }),
+        on="bmu_id",
+        how="left"
+    )
+
+    # -----------------------------
+    # Daily fleet discharge
+    # -----------------------------
+    daily_discharge = (
+        b1610_eve.groupby(b1610_eve[date_col].dt.date)["discharge_mwh"]
+        .sum()
+        .reset_index()
+    )
+    daily_discharge.columns = ["date", "fleet_evening_discharge_mwh"]
+    daily_discharge["date"] = pd.to_datetime(daily_discharge["date"])
+
+    # -----------------------------
+    # Dynamic fleet MWh (CRITICAL FIX)
+    # -----------------------------
+    all_dates = pd.DataFrame({
+        "date": pd.date_range(STUDY_START, STUDY_END, freq="D")
+    })
+
+    missing_dates = set(all_dates["date"]) - set(daily_discharge["date"])
+
+    if len(missing_dates) > 0:
+        print(f"Warning: {len(missing_dates)} dates have no B1610 evening data")
+    
+    def fleet_mwh_on_date(d):
+        active = bmu_short[
+            (bmu_short["commissioning_date"].notna()) &
+            (bmu_short["commissioning_date"] <= d) &
+            (bmu_short["decommissioning_date"] > d)
+    ]
+        return active[mwh_col].fillna(0).sum(), len(active)
+
+    fleet_info = all_dates["date"].apply(
+        lambda d: pd.Series(fleet_mwh_on_date(d), index=["fleet_mwh", "n_bmus"])
+    )
+
+    fleet_df = pd.concat([all_dates, fleet_info], axis=1)
+
+    if (fleet_df["fleet_mwh"] <= 0).any():
+        raise ValueError(
+            "Fleet MWh is zero for some dates — commissioning logic failed."
+        )
+    
+    # -----------------------------
+    # Combine treatment
+    # -----------------------------
+    # daily = daily_discharge.merge(fleet_df, on="date", how="left")
+
+    daily = all_dates.merge(daily_discharge, on="date", how="left")
+
+    daily["fleet_evening_discharge_mwh"] = daily["fleet_evening_discharge_mwh"].fillna(0)
+
+    daily = daily.merge(fleet_df, on="date", how="left")
+
+    daily["evening_depletion_d"] = (
+        daily["fleet_evening_discharge_mwh"] / daily["fleet_mwh"]
+    )
+
+    # -----------------------------
+    # HS-1 coverage (CRITICAL FIX)
+    # -----------------------------
+    observed = (
+        b1610_eve.groupby(b1610_eve[date_col].dt.date)[bmu_col]
+        .count()
+        .reset_index()
+    )
+    observed.columns = ["date", "observed_bmu_sps"]
+    observed["date"] = pd.to_datetime(observed["date"])
+
+    daily = daily.merge(observed, on="date", how="left")
+
+    daily["expected_bmu_sps"] = daily["n_bmus"] * len(EVENING_SPS)
+
+    daily = daily.rename(columns={
+        "observed_bmu_sps": "BESS_SD_fleet_operational_bmu_sps_observed",
+        "expected_bmu_sps": "BESS_SD_fleet_operational_bmu_sps_expected"
+    })
+
+    # -----------------------------
+    # Final checks
+    # -----------------------------
+    daily["evening_depletion_d"] = daily["evening_depletion_d"].clip(lower=0)
+
     return daily, bmu_day
-
-
+    
 # ---------------------------------------------------------------------------
 # Step 2: WINDFOR → evening wind forecast covariate
 # ---------------------------------------------------------------------------
@@ -335,6 +487,10 @@ def run_merge() -> None:
     sys_prices   = _load(RAW_DIR / "prices" / "system_prices_raw.parquet", "System prices")
     da_prices    = _load(RAW_DIR / "prices" / "da_prices_raw.parquet", "DA prices")
     bmu_short    = _load(PROJECT_ROOT / "data" / "short_duration_bmu_list.csv", "Short-duration BMU list")
+
+    # 🔧 CRITICAL: remove unnamed columns from CSV
+    bmu_short = bmu_short.loc[:, ~bmu_short.columns.isna()]
+    bmu_short = bmu_short.dropna(axis=1, how="all")
 
     logger.info("Building BESS treatment metric and coverage...")
     daily_bess, bmu_day = build_bess_treatment(b1610, bmu_short)

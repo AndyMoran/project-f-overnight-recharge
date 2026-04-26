@@ -356,5 +356,80 @@ This deviation was not driven by results, but by failure of a pre-registered val
 
 The regression analysis is not pre-registered and should be interpreted as a complementary, non-pre-registered analysis.
 
+## Entry 007 — Regeneration of Short‑Duration BMU List
 
-**Approved by:** Andy Moran, 2026-04-20.
+Date: 2026‑04‑22
+**Triggered by:** Multiple failures in downstream code and inconsistencies in the prereg‑locked BMU identification outputs.
+
+**Summary**
+
+The preregistered short‑duration BMU list (data/short_duration_bmu_list.csv) was regenerated following corrections to the BMU identification logic, updates to manually researched MWh ratings, adjustments to duration thresholds, and updates to the underlying reference data. The previous version of the file was internally inconsistent and caused failures in the treatment‑construction and matching pipelines.
+
+**What changed**
+
+The regenerated file differs from the prereg‑locked version in several material ways:
+
+Bug fixes in the BMU identification script (ordering, filtering, and classification logic).
+
+Updated MWh ratings in bmu_mwh_manual.csv based on corrected or newly available information.
+
+Updated duration thresholds, ensuring consistent classification of short‑duration units.
+
+Updated reference data, including BMU metadata and activity flags.
+
+Addition of a new column duration_hours, making the duration calculation explicit rather than implicit.
+
+Reordering and reclassification of BMUs based on corrected logic.
+
+Removal of units incorrectly included in the earlier version.
+
+Addition of units previously omitted due to reference‑data issues.
+
+**Justification**
+
+The regeneration was necessary because the prereg‑locked version of the BMU list:
+
+contained incorrect or outdated MWh ratings
+
+misclassified several BMUs
+
+omitted valid short‑duration units
+
+included units that should not have been classified as short‑duration
+
+lacked an explicit duration column, causing downstream ambiguity
+
+caused failures in build_bess_treatment() and related diagnostics
+
+produced inconsistent results in the matched‑pair and regression pipelines
+
+These issues were not the result of analytical choices but of data and implementation errors in the pre‑lock identification process. Regenerating the list was required to restore internal consistency and allow the preregistered treatment metric to be computed correctly.
+
+**Impact on analysis**
+
+The regeneration affects the construction of evening_depletion_d, HS‑1, and HS‑7.
+
+The change is not driven by results but by corrections to data and logic.
+
+All downstream analyses must be interpreted using the regenerated list.
+
+The matched‑pair estimator was already deemed invalid (Entry 006); this regeneration does not affect that conclusion.
+
+The regression analysis (non‑preregistered) uses the corrected list for consistency.
+
+**Files changed**
+
+data/short_duration_bmu_list.csv — regenerated
+
+data/bmu_mwh_manual.csv — updated
+
+data/bmu_exclusions.csv — updated
+
+prelock_checks/build_bmu_list.py — corrected
+
+src/merge.py — updated to use explicit duration logic
+
+(Any other files you touched — list them explicitly)
+
+Approved by: Andy Moran, 2026‑04‑22.
+
