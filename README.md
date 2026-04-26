@@ -1,8 +1,34 @@
 # Overnight Recharge Suppression in GB Short-Duration BESS
-A pre-registered study of whether evening depletion of ≤2h GB BESS suppresses overnight imbalance prices
-Python 3.11 | Energy markets | 2026
 
-## Status — Pre-registration locked, analysis not yet run
+## Status — Pre-registration locked, analysis completed
+
+Pre-registration v3.2 was locked at commit `e454425f5f0a18901795ecbc46a3e6b4eca530b4` (tag: `prereg-lock-v3.2`) prior to any data access.
+
+The pre-registered analysis has since been executed.
+
+* The primary matched-pairs design failed a hard-stop validity check (HS-3), preventing causal inference.
+* Subsequent regression and trading analysis were conducted under explicitly **non-pre-registered (post-lock)** status.
+
+👉 **Post-lock analysis, results, and investment memo are available in the [`postlock-analysis`](../../tree/postlock-analysis) branch.**
+
+This branch separation ensures that:
+
+* the pre-registered specification remains immutable
+* exploratory analysis is clearly distinguished from causal inference
+
+---
+
+## Original Pre-Lock State (Preserved)
+
+At the time of lock:
+
+No B1610 data had been accessed.
+No matching had been run.
+No results existed.
+
+The primary artefact in this repository remains the pre-registration, not the result.
+
+## Status — Pre-registration locked, analysis completed
 
 Pre-registration v3.2 locked at commit `[e454425f5f0a18901795ecbc46a3e6b4eca530b4]`, tag `prereg-lock-v3.2`, on `[Mon Apr 20 20:51:53 2026 +0100]`. No B1610 data has been accessed. No matching has been run. No results exist.
 
@@ -163,3 +189,10 @@ This project applies the same discipline to a new physical mechanism. The gate m
 Built 2026. Part of a quantitative research portfolio focused on causal identification, pre-registered hypothesis testing, and honest constraint disclosure under real-world data limitations.
 
 andrewgmoran@gmail.com
+
+## Repository Structure (Research Separation)
+
+- `main` → Pre-registered design and locked specification  
+- `postlock-analysis` → Regression, trading analysis, and investment memo  
+
+This separation preserves the integrity of causal claims while allowing exploratory analysis.
